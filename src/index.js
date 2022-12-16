@@ -1,10 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import App from './App';
+import reportWebVitals from './reportWebVitals';
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-// tar en plats från index med Id root 
-const root = document.getElementById('root')
-
-// skicka element till root 
-ReactDOM.render( <App/>, root)
+reportWebVitals();
