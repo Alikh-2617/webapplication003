@@ -18,9 +18,14 @@ function Show({person , onDelete }){
                     show && 
                     <div>
                         <li>Age : {person.age}</li>
-                        <li>City : {person.city == null ? "0" : person.city.name}</li>
-                        <li>Country: {person.city == null ? "0" : person.city.country.name }</li>
-                        <li>Language :[ {person.languages == null ? "0" : person.languages.map((item)=><p key={item.id}>{item.name} </p>)}]</li>
+                        <li>Phone Number : {person.phoneNumber}</li>
+                        <li>Register Date  : {person.register}</li>
+                        {person.city == null ? "" :<li> City : {person.city.name} </li> } 
+                        {person.city == null ? " " : <li> Country :  {person.city.country.name} </li> }
+                        {person.languages.map((item)=>
+                        
+                        <li key={item.id}> Language : {item.name}</li>)}
+
                         <li>
                         <button className="btn btn-danger" onClick={()=>onDelete(person.id)}>Delete</button>
                         </li>

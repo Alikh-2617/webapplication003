@@ -5,12 +5,12 @@ import Table from 'react-bootstrap/Table'
 import Show from './show'
 function Data(){
 
-    const [post , setPost] = useState([])
+    const [Data , setData] = useState([])
 
     useEffect(()=>{
         axios.get(`https://localhost:44317/api/react`)
         .then(res =>{
-            setPost(res.data)
+            setData(res.data)
         })
     })
 
@@ -20,6 +20,28 @@ function Data(){
             .then(response => response.data)
     }
 
+    // const [order , setOrder] = useState("ASC")
+    // const sorting =(col)=>{
+    //     if(order === "ASC"){
+    //         const sored = [...Data].sort((a,b)=>
+    //         a[col].toLowerCase() > b[col].toLowerCase() ? 1 :-1
+    //         );
+    //         setData(sored);
+    //         console.log(sored)
+    //         setOrder("DSC")
+    //     }
+    //     if(order === "DSC"){
+    //         const sored = [...Data].sort((a,b)=>
+    //         a[col].toLowerCase() > b[col].toLowerCase() ? 1 :-1
+    //         );
+    //         setData(sored);
+    //         setOrder("ASC")
+    //     }
+    // }
+
+
+
+
 return(
     <div className="container">
     <br/>
@@ -28,6 +50,7 @@ return(
     <Link to="/Create">
         <button className="btn btn-info">Create New Person</button>
     </Link>
+    {/* <button onClick={()=>sorting('name')}> sort</button> */}
     <hr/>
     <Table striped bordered hover size="sm">
         <thead>
@@ -38,8 +61,9 @@ return(
             </tr>
         </thead>
         <tbody>
-            {post.map((person)=>
-            <Show key={person.id} person={person} onDelete={DeletePerson}/>
+            {
+                Data.sort((a,b) =>  a.name.localeCompare(b.name)).map((person)=>
+                <Show key={person.id} person={person} onDelete={DeletePerson}/>
             )}
         </tbody>
         </Table>
