@@ -7,7 +7,6 @@ function AddPerson(){
     
     const navigate = useNavigate();
 
-
     const [cites , setCites] = useState([])
 
 
@@ -16,7 +15,7 @@ function AddPerson(){
         axios.get(`https://localhost:44317/api/react/city`)
         .then(res =>{
             const city = res.data;
-            setCites(city)
+            setCites(city)   // den lagera inte data i setCity state ?
             console.log(cites)
 
         })
@@ -48,7 +47,6 @@ const handleSubmit =(event)=>{
 function CreatePerson(){
     axios.post(`https://localhost:44317/api/react/create`,person)
     .then(response=>response.status)
-
     navigate('/');
 }
 
