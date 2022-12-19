@@ -11,33 +11,17 @@ function Data(){
         axios.get(`https://localhost:44317/api/react`)
         .then(res =>{
             setData(res.data)
+            console.log(res.data)
         })
-    })
+    },[])
 
     async function DeletePerson(props) {
         console.log(props)
         await axios.delete(`https://localhost:44317/api/react/${props}`)
             .then(response => response.data)
+            setData(Data.filter((item)=>item.id !== props))
     }
 
-    // const [order , setOrder] = useState("ASC")
-    // const sorting =(col)=>{
-    //     if(order === "ASC"){
-    //         const sored = [...Data].sort((a,b)=>
-    //         a[col].toLowerCase() > b[col].toLowerCase() ? 1 :-1
-    //         );
-    //         setData(sored);
-    //         console.log(sored)
-    //         setOrder("DSC")
-    //     }
-    //     if(order === "DSC"){
-    //         const sored = [...Data].sort((a,b)=>
-    //         a[col].toLowerCase() > b[col].toLowerCase() ? 1 :-1
-    //         );
-    //         setData(sored);
-    //         setOrder("ASC")
-    //     }
-    // }
 
 
 
@@ -50,7 +34,6 @@ return(
     <Link to="/Create">
         <button className="btn btn-info">Create New Person</button>
     </Link>
-    {/* <button onClick={()=>sorting('name')}> sort</button> */}
     <hr/>
     <Table striped bordered hover size="sm">
         <thead>

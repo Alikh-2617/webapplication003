@@ -1,16 +1,36 @@
 import axios from 'axios';
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 
-export default function AddPerson(){
+function AddPerson(){
     
     const navigate = useNavigate();
+
+
+    const [cites , setCites] = useState([])
+
+
+
+    useEffect(()=>{
+        axios.get(`https://localhost:44317/api/react/city`)
+        .then(res =>{
+            const city = res.data;
+            setCites(city)
+            console.log(cites)
+
+        })
+    },[])
+
+    
+
     const[person, setPerson] = useState({
         name: "",
         age: 0,
-        phonenumber: ""
+        phonenumber: "",
+        cityid : ""
     }); 
+
 
 const handleChange =(event)=>{
     setPerson({...person, [event.target.name]: event.target.value});
@@ -20,7 +40,8 @@ const handleSubmit =(event)=>{
     setPerson({
         name: this.state.name,
         age: this.state.age,
-        phonenumber: this.state.phonenumber
+        phonenumber: this.state.phonenumber,
+        cityid: this.state.cityid
     });
 };
 
@@ -40,7 +61,18 @@ return(
             <label>Age:</label>
             <input type="number" name="age" onChange={handleChange}></input>
             <label>Phone: </label>
-            <input type="text" name="phonenumber" onChange={handleChange}></input> | 
+            <input type="text" name="phonenumber" onChange={handleChange}></input> 
+            <label>choose city : </label>
+            <select >
+                {/* {
+                    cites.map((city)=>{
+                        <option value={city.id} key={city.id} > {city.name} item </option>
+                        // <option type="text" name="cityid"  value={item.id} > {item.name} item </option>
+                    })
+                } */}
+            </select>
+            
+            | 
 
             <button className='btn btn-info' type="submit" onClick={()=>CreatePerson()}>Create person</button>
         </form>
@@ -48,3 +80,5 @@ return(
 )
 
 }
+
+export default AddPerson

@@ -13,8 +13,8 @@ function App(){
         <Router>
             <div className="App">
                 <Routes>    
-                <Route path='/' exact element={<Data/>}> </Route>
-                    <Route path='/' exact element={<PeopleList/>}> </Route>
+                    <Route path='/' exact element={<Data/>}> </Route>
+                    {/* <Route path='/' exact element={<PeopleList/>}> </Route> */}
                     <Route path='/Create' element={<AddPerson/>}> </Route>
                 </Routes>
             </div>

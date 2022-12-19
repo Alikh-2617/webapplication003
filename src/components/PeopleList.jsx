@@ -41,7 +41,7 @@ export default class PeopleList extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.people.map((person)=>
+                        {this.state.people.sort((a,b) =>  a.name.localeCompare(b.name)).map((person)=>
                         <Person key={person.id} person={person} />
                         )}
                     </tbody>
