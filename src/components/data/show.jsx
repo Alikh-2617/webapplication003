@@ -21,14 +21,7 @@ function Show({person , onDelete }){
                         <li>Phone Number : {person.phoneNumber}</li>
                         <li>Register Date  : {person.register}</li>
                         {person.city == null ? "" :<li> City : {person.city.name} </li> } 
-                        {person.city == null ? " " : <li> Country :  {person.city.country.name} </li> }
-                        {person.languages.map((item)=>
-                        
-                        <li key={item.id}> Language : {item.name}</li>)}
-
-                        <li>
-                        <button className="btn btn-danger" onClick={()=>onDelete(person.id)}>Delete</button>
-                        </li>
+                        <li><button className="btn btn-danger" onClick={()=>onDelete(person.id)}>Delete</button></li>
                     </div>
                 }
             </td>
