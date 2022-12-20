@@ -10,6 +10,7 @@ function AddPerson() {
         name: "",
         age: 0,
         phonenumber: "",
+        // iställt att skicka en city med olika attribute skicka bara Id till den city till server att minska loss data .
         city:""
     });
 
