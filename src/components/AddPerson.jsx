@@ -30,7 +30,7 @@ function AddPerson() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (!person.name || !person.age || !person.phonenumber || !person.city) {
+        if (!person.name || !person.age || !person.phonenumber ) {
             alert('here gonna fylls');
             return;
         }
